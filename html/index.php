@@ -38,7 +38,7 @@
 			echo '<p>';
 			echo 'Pressed: $(cat ../python/Vaniog-bot/data.json | jq .pressed) ';
 			echo 'Photos send: $(cat ../python/Vaniog-bot/data.json | jq .photos_send) ';
-            echo shell_exec("cd ../python/Vaniog-bot && python bot_ping_me.py 2>$1");
+            echo shell_exec("cd ../python/Vaniog-bot && python bot_ping_me.py 2>&1");
 		}
 	?>
 
