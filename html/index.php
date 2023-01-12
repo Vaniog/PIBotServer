@@ -35,7 +35,7 @@
         }
 		function button3() {
 			echo "PING!";
-            echo shell_exec("cd ../python/Vaniog-bot && python bot_ping_me.py");
+            echo shell_exec("cd ../python/Vaniog-bot && python bot_ping_me.py 2>$1");
 		}
 	?>
 
