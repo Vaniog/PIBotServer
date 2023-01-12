@@ -19,14 +19,14 @@
 		else if(array_key_exists('button2', $_POST)) {
 			button2();
 		}
-		function button1() {
+		function button1() {    
             echo 'Relaunch:';
 			echo date('l jS \of F Y h:i:s A');
-            exec("cd ../python/Vaniog-bot && ./scripts/launch.sh > /dev/null &");
+            shell_exec("cd ../python/Vaniog-bot && sudo ./scripts/launch.sh > /dev/null &");
 		}
         function button2() {
 			echo("Killed");
-            shell_exec("cd ../python/Vaniog-bot && ./scripts/kill.sh");
+            shell_exec("cd ../python/Vaniog-bot && sudo ./scripts/kill.sh");
         }
 	?>
 
