@@ -22,7 +22,7 @@
 		function button1() {
             echo 'Relaunch:';
 			echo date('l jS \of F Y h:i:s A');
-            shell_exec("cd ../python/Vaniog-bot && ./scripts/launch.sh");
+            shell_exec("cd ../python/Vaniog-bot && ./scripts/launch.sh > /dev/null");
 		}
         function button2() {
 			echo("Killed");
