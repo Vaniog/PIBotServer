@@ -20,7 +20,8 @@
 			button2();
 		}
 		function button1() {
-			echo("Relaunch at " + date('l jS \of F Y h:i:s A'));
+            echo 'Relaunch:';
+			echo date('l jS \of F Y h:i:s A');
             shell_exec("cd ../python/Vaniog-bot && ./scripts/launch.sh");
 		}
         function button2() {
