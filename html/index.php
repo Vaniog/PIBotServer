@@ -23,10 +23,15 @@
 			echo("Relaunch at " + date('l jS \of F Y h:i:s A'));
             shell_exec("cd ../python/Vaniog-bot && ./scripts/launch.sh");
 		}
+        function button2() {
+			echo("Killed");
+            shell_exec("cd ../python/Vaniog-bot && ./scripts/kill.sh");
+        }
 	?>
 
 	<form method="post">
 		<input type="submit" name="button1" class="button" value="Button1" />		
+		<input type="submit" name="button2" class="button" value="Button2" />	
 	</form>
 
 </body>
