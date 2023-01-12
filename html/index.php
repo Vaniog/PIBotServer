@@ -19,6 +19,9 @@
 		else if(array_key_exists('button2', $_POST)) {
 			button2();
 		}
+		else if(array_key_exists('button3', $_POST)) {
+			button3();
+		}
 		function button1() {    
             echo 'Relaunch:';
 			echo date('l jS \of F Y h:i:s A');
@@ -30,11 +33,16 @@
 			echo("Killed");
             shell_exec("cd ../python/Vaniog-bot && sudo ./scripts/kill.sh");
         }
+		function button3() {
+			echo "PING!";
+			shell_exec("cd ../python/Vaniog-bot && sudo python bot_ping_me.py");
+		}
 	?>
 
 	<form method="post">
 		<input type="submit" name="button1" class="button" value="Button1" />		
 		<input type="submit" name="button2" class="button" value="Button2" />	
+		<input type="submit" name="button3" class="button" value="PING" />
 	</form>
 
 </body>
