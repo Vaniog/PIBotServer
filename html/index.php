@@ -23,7 +23,7 @@
             echo 'Relaunch:';
 			echo date('l jS \of F Y h:i:s A');
             exec(sprintf("%s > %s 2>&1 & echo $! >> %s", 
-            "cd ../python/Vaniog-bot && sudo ./scripts/launch.sh > /dev/null", 
+            "cd ../python/Vaniog-bot && sudo ./scripts/launch.sh", 
             'file1.txt', 'file2.txt'));
 		}
         function button2() {
