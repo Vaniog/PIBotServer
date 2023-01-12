@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-	
+
 <head>
 	<title>
-        BotLaunch
+		BotLaunch
 	</title>
 </head>
 
-<body style="text-align:center;">	
-	<h4>
-        Press to relaunch bot
-	</h4>
-	
+<body style="text-align:center;">
+	<h1>
+		Press to ping
+	</h1>
+
 	<?php
 		if(array_key_exists('button1', $_POST)) {
 			button1();
@@ -35,13 +35,25 @@
         }
 		function button3() {
 			echo "PING!";
-			shell_exec("cd ../python/Vaniog-bot && sudo python bot_ping_me.py");
+            shell_exec("cd ../python/Vaniog-bot && python bot_ping_me.py");
 		}
 	?>
 
+	<style>
+		.button {
+			font-size: 2em;
+			width: 200px;
+			height: 100px;
+			border-radius: 20px;
+			border: none;
+		}
+
+		.button:hover {
+			transform: scale(0.97);
+		}
+	</style>
+
 	<form method="post">
-		<input type="submit" name="button1" class="button" value="Button1" />		
-		<input type="submit" name="button2" class="button" value="Button2" />	
 		<input type="submit" name="button3" class="button" value="PING" />
 	</form>
 
