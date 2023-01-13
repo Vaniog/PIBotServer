@@ -1,5 +1,5 @@
 #!/bin/bash
 
-sudo git pull
-sudo ./scripts/kill.sh
-sudo python bot.py &
+git pull
+./scripts/kill.sh
+python bot.py &

@@ -2,8 +2,8 @@ import time
 import json
 from telegram import Bot
 
-chat_id = [1264063325, 870732774, 5100400358, 1352366907]
-# chat_id = [870732774]
+# chat_id = [1264063325, 870732774, 5100400358, 1352366907]
+chat_id = [870732774]
 
 
 def get_token():

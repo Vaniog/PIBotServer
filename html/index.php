@@ -13,22 +13,27 @@
 	</h1>
 
 	<?php
-		if(array_key_exists('button1', $_POST)) {
-			button1();
+		if(array_key_exists('btn_launch', $_POST)) {
+			btn_launch();
 		}
-		else if(array_key_exists('button2', $_POST)) {
-			button2();
+		else if(array_key_exists('btn_kill', $_POST)) {
+			btn_kill();
 		}
-		else if(array_key_exists('button3', $_POST)) {
-			button3();
+		else if(array_key_exists('btn_ping', $_POST)) {
+			btn_ping();
 		}
-		function button1() {
-           		echo 'Relaunch:';
+		function btn_launch() {
+           	echo 'Relaunch:';
 			echo date('l jS \of F Y h:i:s A');
-			echo shell_exec("cd ../python/Vaniog-bot && ./scripts/launch.sh 2>&1");
+			echo shell_exec("cd ../python/Vaniog-bot && ./scripts/launch.sh > /dev/null &");
 		}
 
-		function button3() {
+		function btn_kill() {
+			echo 'Stopped: ';
+			echo shell_exec("cd ../python/Vaniog-bot && ./scripts/kill.sh 2>&1");
+		}
+
+		function btn_ping() {
 			echo "PING!<br>";
 			echo 'Pressed: ';
 			echo shell_exec('cat ../python/Vaniog-bot/data.json | jq .pressed');
@@ -53,8 +58,9 @@
 	</style>
 
 	<form method="post">
-		<input type="submit" name="button3" class="button" value="PING" />
-		<input type="submit" name="button1" class="button" value="LAUNCH" />
+		<input type="submit" name="btn_ping" class="button" value="PING" />
+		<input type="submit" name="btn_launch" class="button" value="LAUNCH" />
+		<input type="submit" name="btn_kill" class="button" value="KILL" />
 	</form>
 
 </body>
