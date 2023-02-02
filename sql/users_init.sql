@@ -7,7 +7,8 @@ create table users
 (
     id       int NOT NULL AUTO_INCREMENT,
     name     varchar(255),
-    password varchar(32),
+    password varchar(40),
+    is_admin bool,
     PRIMARY KEY (id)
 );
 
