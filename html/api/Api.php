@@ -1,5 +1,5 @@
 <?php
 
 abstract class Api {
-    abstract function run($json_data);
+    abstract function Run($json_data);
 }

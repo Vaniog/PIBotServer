@@ -1,5 +1,6 @@
 import time
 import json
+from database import SQLSession
 from telegram import Bot
 
 # chat_id = [1264063325, 870732774, 5100400358, 1352366907]
@@ -14,23 +15,23 @@ def get_token():
     return token
 
 
+sql_session = SQLSession()
 bot = Bot(get_token())
-with open("data.json") as f:
-    data = json.load(f)
 
 
 def send_random_cat():
-    url = f'https://cataas.com/cat?t=${time.time()}'
-    data['pressed'] += 1
+    # url = f'https://cataas.com/cat?t=${time.time()}'
+    url = f'https://loremflickr.com/320/240/cat,kitty&t=${time.time()}'
+    sql_session.exec(
+        r"update count set count=count+1 where name='ping';")
     for id_iter in chat_id:
         bot.send_photo(id_iter, url)
-        data['photos_send'] += 1
+        sql_session.exec(
+            r"update count set count=count+1 where name='photos_send';")
 
 
 def main() -> None:
     send_random_cat()
-    with open('data.json', 'w') as f:
-        json.dump(data, f)
 
 
 if __name__ == "__main__":
