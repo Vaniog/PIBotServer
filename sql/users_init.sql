@@ -1,7 +1,5 @@
 use
     web_database;
-drop
-    table if exists users;
 
 create table if not exists users
 (

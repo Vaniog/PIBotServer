@@ -1,10 +1,6 @@
 import time
-import json
 from database import SQLSession
 from telegram import Bot
-
-# chat_id = [1264063325, 870732774, 5100400358, 1352366907]
-chat_id = [870732774]
 
 
 def get_token():
@@ -18,6 +14,8 @@ def get_token():
 sql_session = SQLSession()
 bot = Bot(get_token())
 
+chat_id = sql_session.exec("select * from telegram_data")
+
 
 def send_random_cat():
     # url = f'https://cataas.com/cat?t=${time.time()}'
@@ -25,7 +23,7 @@ def send_random_cat():
     sql_session.exec(
         r"update count set count=count+1 where name='ping';")
     for id_iter in chat_id:
-        bot.send_photo(id_iter, url)
+        bot.send_photo(id_iter[0], url)
         sql_session.exec(
             r"update count set count=count+1 where name='photos_send';")
 

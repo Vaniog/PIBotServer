@@ -17,10 +17,11 @@ class SQLSession:
             database='web_database')
         self.cursor = self.connection.cursor()
 
-    def exec(self, commands):
-        for command in commands.split(';'):
-            self.cursor.execute(command)
-            self.cursor.close()
-            self.connection.commit()
-            self.connection.reconnect()
-            self.cursor = self.connection.cursor()
+    def exec(self, command):
+        self.cursor.execute(command)
+        to_return = self.cursor.fetchall().copy();
+        self.cursor.close()
+        self.connection.commit()
+        self.connection.reconnect()
+        self.cursor = self.connection.cursor()
+        return to_return
