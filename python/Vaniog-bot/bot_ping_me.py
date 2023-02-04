@@ -23,7 +23,7 @@ def send_random_cat():
     sql_session.exec(
         r"update count set count=count+1 where name='ping';")
     for id_iter in chat_id:
-        bot.send_photo(id_iter[0], url)
+        bot.send_photo(id_iter[1], url)
         sql_session.exec(
             r"update count set count=count+1 where name='photos_send';")
 

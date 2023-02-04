@@ -38,7 +38,13 @@ def send_error(update: Update, context: CallbackContext):
 
 def subscribe(update: Update, context: CallbackContext):
     if len(sql_session.exec(f"select * from telegram_data where telegram_id={update.message.chat_id}")) == 0:
-        sql_session.exec(f"insert into telegram_data values ({update.message.chat_id})")
+        sql_session.exec(
+            f"insert into telegram_data values ('{update.message.from_user.first_name}', {update.message.chat_id})")
+        context.bot.send_message(
+            text="Вы подписались!", chat_id=update.message.chat_id)
+    else:
+        context.bot.send_message(
+            text="Вы уже подписаны!", chat_id=update.message.chat_id)
 
 
 def main() -> None:
