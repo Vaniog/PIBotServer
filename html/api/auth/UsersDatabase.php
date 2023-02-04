@@ -52,4 +52,9 @@ class UsersDatabase extends Database
         $sql = "select * from users";
         return mysqli_query($this->link_, $sql);
     }
+    public function AllTelegramUsers()
+    {
+        $sql = "select * from telegram_data";
+        return mysqli_query($this->link_, $sql);
+    }
 }

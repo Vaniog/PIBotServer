@@ -45,6 +45,22 @@ if (isset($_SESSION['User']) && $_SESSION['User']['is_admin']) {
 
     echo "</table>";
 
+    echo "Telegram:";
+    echo "<table border='1'>";
+    $all_users = $db->AllTelegramUsers();
+    echo "<tr>
+        <td>Name</td>
+        <td>ID</td>
+    </tr>";
+    while ($user = mysqli_fetch_assoc($all_users)) {
+        echo "<tr>";
+        foreach ($user as &$column) {
+            echo "<td>$column</td>";
+        }
+        echo "</tr>";
+    }
+
+    echo "</table>";
 } else {
     ?>
 

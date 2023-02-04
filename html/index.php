@@ -42,8 +42,13 @@ if (isset($_SESSION['User'])) {
 
 <div id="api_answer"></div>
 <button id="btn_ping" class="button">PING</button>
-<button id="btn_launch" class="button">LAUNCH</button>
-<button id="btn_kill" class="button">KILL</button>
+<?php
+if (isset($_SESSION['User']) && $_SESSION['User']['is_admin']) {
+    ?>
+    <button id="btn_launch" class="button">LAUNCH</button>
+    <button id="btn_kill" class="button">KILL</button>
+    <?php
+} ?>
 
 <script type="module" src="js/main.js"></script>
 </body>
