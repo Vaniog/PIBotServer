@@ -19,12 +19,6 @@ if (isset($_SESSION['User'])) {
     </title>
 </head>
 
-<body style="text-align:center;">
-
-<h1>
-    Press to ping
-</h1>
-
 <style>
     .button {
         font-size: 2em;
@@ -39,16 +33,25 @@ if (isset($_SESSION['User'])) {
     }
 </style>
 
+<div style="display: flex; flex-direction: column; align-items: center">
 
-<div id="api_answer"></div>
-<button id="btn_ping" class="button">PING</button>
-<?php
-if (isset($_SESSION['User']) && $_SESSION['User']['is_admin']) {
-    ?>
-    <button id="btn_launch" class="button">LAUNCH</button>
-    <button id="btn_kill" class="button">KILL</button>
-    <?php
-} ?>
+    <h1>
+        Press to ping
+    </h1>
+
+    <div id="api_answer"></div>
+    <div>
+        <button id="btn_ping" class="button">PING</button>
+        <?php
+        if (isset($_SESSION['User']) && $_SESSION['User']['is_admin']) {
+            ?>
+            <button id="btn_launch" class="button">LAUNCH</button>
+            <button id="btn_kill" class="button">KILL</button>
+            <?php
+        } ?>
+    </div>
+    <a href="https://t.me/Vaniog_bot">Бот</a>
+</div>
 
 <script type="module" src="js/main.js"></script>
 </body>
