@@ -6,7 +6,7 @@ if (isset($_SESSION['User'])) {
         . $_SESSION['User'] .
         "</div>";
 } else {
-    header("Location: http://192.168.5.143/authorize.php");
+    header('Location: http://' . $_SERVER["SERVER_NAME"] . '/authorize.php');
 }
 ?>
 

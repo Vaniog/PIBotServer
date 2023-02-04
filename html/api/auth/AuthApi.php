@@ -17,7 +17,7 @@ class AuthApi extends Api
         } catch (Throwable $e) {
             echo $e->getMessage();
         }
-        header("Location: http://192.168.5.143");
+        header('Location: http://' . $_SERVER["SERVER_NAME"]);
     }
 
     private function Register($name, $password)
