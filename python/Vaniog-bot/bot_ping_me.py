@@ -18,8 +18,10 @@ chat_id = sql_session.exec("select * from telegram_data")
 
 
 def send_random_cat():
-    # url = f'https://cataas.com/cat?t=${time.time()}'
-    url = f'https://loremflickr.com/320/240/cat,kitty&t=${time.time()}'
+    try:
+        url = f'https://cataas.com/cat?t=${time.time()}'
+    except:
+        url = f'https://loremflickr.com/320/240/cat,kitty&t=${time.time()}'
     sql_session.exec(
         r"update count set count=count+1 where name='ping';")
     for id_iter in chat_id:

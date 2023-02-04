@@ -26,8 +26,10 @@ def start(update, context):
 
 
 def send_random_cat(update: Update, context: CallbackContext):
-    # url = f'https://cataas.com/cat?t=${time.time()}'
-    url = f'https://loremflickr.com/320/240/cat,kitty&t=${time.time()}'
+    try:
+        url = f'https://cataas.com/cat?t=${time.time()}'
+    except:
+        url = f'https://loremflickr.com/320/240/cat,kitty&t=${time.time()}'
     context.bot.send_photo(update.message.chat_id, url)
 
 
