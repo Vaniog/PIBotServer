@@ -23,7 +23,7 @@ class UsersDatabase extends Database
         }
         $new_password = $this->Encode($password);
 
-        $sql = "insert into users (name, password) values ('$name', '$new_password')";
+        $sql = "insert into users (name, password, is_admin) values ('$name', '$new_password', 0)";
         mysqli_query($this->link_, $sql);
 
         return true;
@@ -40,4 +40,16 @@ class UsersDatabase extends Database
         return $this->Encode($password) == $real_password;
     }
 
+    public function UserGet($name)
+    {
+        $sql = "select * from users where name='$name';";
+        $result = mysqli_query($this->link_, $sql);
+        return mysqli_fetch_assoc($result);
+    }
+
+    public function AllUsers()
+    {
+        $sql = "select * from users";
+        return mysqli_query($this->link_, $sql);
+    }
 }

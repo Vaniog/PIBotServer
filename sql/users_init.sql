@@ -1,9 +1,9 @@
 use
-web_database;
+    web_database;
 drop
     table if exists users;
 
-create table users
+create table if not exists users
 (
     id       int NOT NULL AUTO_INCREMENT,
     name     varchar(255),

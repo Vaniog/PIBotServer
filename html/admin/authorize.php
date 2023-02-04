@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-require_once("api/auth/UsersDatabase.php");
+require_once(__DIR__ . "/../api/auth/UsersDatabase.php");
 
 $errors = [];
 
@@ -33,7 +33,8 @@ function Register()
 
     $db->UserAdd($_POST['name'], $_POST['password']);
 
-    $_SESSION['User'] = $_POST['name'];
+    $_SESSION['User'] = ['name' => $_POST['name'],
+        'is_admin' => $db->UserGet($_POST['name'])['is_admin']];
 }
 
 function Login()
@@ -56,7 +57,8 @@ function Login()
         return;
     }
 
-    $_SESSION['User'] = $_POST['name'];
+
+    $_SESSION['User'] = $db->UserGet($_POST['name']);
 }
 
 if ($_POST != null && isset($_POST['action'])) {
@@ -74,8 +76,9 @@ if ($_POST != null && isset($_POST['action'])) {
 <html lang="en">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/authorize.css"></link>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet">
+<link rel="stylesheet" href="css/authorize.css">
 
 <head>
     <link rel="icon" href="https://icons.iconarchive.com/icons/google/noto-emoji-smileys/48/10103-robot-face-icon.png">
@@ -86,9 +89,9 @@ if ($_POST != null && isset($_POST['action'])) {
 <body>
 
 <?php
-if (isset($_SESSION['User'])) {
+if (isset($_SESSION['User']['name'])) {
     echo "<div class='reg_as'>Вы зарегистрированы как "
-        . $_SESSION['User'] .
+        . $_SESSION['User']['name'] .
         "</div>";
 }
 ?>

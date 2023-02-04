@@ -3,10 +3,10 @@
 session_start();
 if (isset($_SESSION['User'])) {
     echo "<div class='reg_as'>Вы зарегистрированы как "
-        . $_SESSION['User'] .
+        . $_SESSION['User']['name'] .
         "</div>";
 } else {
-    header('Location: http://' . $_SERVER["SERVER_NAME"] . '/authorize.php');
+    header('Location: http://' . $_SERVER["SERVER_NAME"] . '/admin/authorize.php');
 }
 ?>
 
