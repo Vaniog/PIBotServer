@@ -5,9 +5,9 @@ if (isset($_SESSION['User'])) {
     echo "<div class='reg_as'>Вы зарегистрированы как "
         . $_SESSION['User']['name'] .
         "</div>";
-} else {
+}/* else {
     header('Location: http://' . $_SERVER["SERVER_NAME"] . '/admin/authorize.php');
-}
+}*/
 ?>
 
 <html lang="en">

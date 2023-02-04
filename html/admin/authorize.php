@@ -123,6 +123,11 @@ if (isset($_SESSION['User']['name'])) {
     ?>
 </div>
 
+<?php
+if (isset($_SESSION['User']['name'])) {
+    echo "<a href='http://" . $_SERVER["SERVER_NAME"] . "'>Главная страница</a>";
+}
+?>
 
 </body>
 </html>
