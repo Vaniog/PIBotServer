@@ -61,6 +61,8 @@ if (isset($_SESSION['User']) && $_SESSION['User']['is_admin']) {
     }
 
     echo "</table>";
+
+    echo "<a href='http://" . $_SERVER["SERVER_NAME"] . "'>Главная страница</a>";
 } else {
     ?>
 

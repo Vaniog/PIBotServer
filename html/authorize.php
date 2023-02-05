@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-require_once(__DIR__ . "/../api/auth/UsersDatabase.php");
+require_once(__DIR__ . "/api/auth/UsersDatabase.php");
 
 $errors = [];
 
@@ -108,8 +108,8 @@ if (isset($_SESSION['User']['name'])) {
             <input type="text" id="password_input" name="password" placeholder="Enter password"
                    value='<?php if (isset($_POST['password'])) echo $_POST['password'] ?>'>
         </label>
-        <input type="submit" name="action" value="register">
         <input type="submit" name="action" value="login">
+        <input type="submit" name="action" value="register">
     </form>
 
     <?php
