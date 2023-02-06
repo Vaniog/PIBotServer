@@ -33,8 +33,7 @@ function Register()
 
     $db->UserAdd($_POST['nickname'], $_POST['password']);
 
-    $_SESSION['User'] = ['nickname' => $_POST['nickname'],
-        'is_admin' => $db->UserGet($_POST['nickname'])['is_admin']];
+    $_SESSION['User'] = $db->UserGet($_POST['nickname']);
 }
 
 function Login()
@@ -101,7 +100,7 @@ if (isset($_SESSION['User']['nickname'])) {
     <form class="reg_form" action="authorize.php" method="POST">
         <input type="hidden" name="action" value="register">
         <label>
-            <input type="text" id="name_input" name="name" placeholder="Enter nickname"
+            <input type="text" id="name_input" name="nickname" placeholder="Enter nickname"
                    value='<?php if (isset($_POST['nickname'])) echo $_POST['nickname'] ?>'>
         </label>
         <label>
