@@ -4,7 +4,7 @@ session_start();
 $is_admin = false;
 if (isset($_SESSION['User'])) {
     echo "<div class='reg_as'>Вы зарегистрированы как "
-        . $_SESSION['User']['name'] .
+        . $_SESSION['User']['nickname'] .
         "</div>";
     $is_admin = true;
 }/* else {

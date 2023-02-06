@@ -13,8 +13,8 @@ require_once(__DIR__ . "/../api/auth/UsersDatabase.php");
 $db = new UsersDatabase();
 
 if (isset($_SESSION['User'])) {
-    echo "You " . $_SESSION['User']['name'] . "<br>";
-    $_SESSION['User'] = $db->UserGet($_SESSION['User']['name']);
+    echo "You " . $_SESSION['User']['nickname'] . "<br>";
+    $_SESSION['User'] = $db->UserGet($_SESSION['User']['nickname']);
 }
 ?>
 
