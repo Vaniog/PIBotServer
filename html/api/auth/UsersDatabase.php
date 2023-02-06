@@ -11,7 +11,7 @@ class UsersDatabase extends Database
 
     public function UserExists($name): bool
     {
-        $sql = "select * from users where name='$name';";
+        $sql = "select * from users where nickname='$name'";
         $result = mysqli_query($this->link_, $sql);
         return mysqli_fetch_array($result) != null;
     }
@@ -23,7 +23,7 @@ class UsersDatabase extends Database
         }
         $new_password = $this->Encode($password);
 
-        $sql = "insert into users (name, password, is_admin) values ('$name', '$new_password', 0)";
+        $sql = "insert into users (nickname, password) values ('$name', '$new_password')";
         mysqli_query($this->link_, $sql);
 
         return true;
@@ -34,7 +34,7 @@ class UsersDatabase extends Database
         if (!$this->UserExists($name)) {
             return false;
         }
-        $sql = "select (password) from users where name='$name';";
+        $sql = "select (password) from users where nickname='$name'";
         $result = mysqli_query($this->link_, $sql);
         $real_password = mysqli_fetch_array($result)[0];
         return $this->Encode($password) == $real_password;
@@ -42,7 +42,7 @@ class UsersDatabase extends Database
 
     public function UserGet($name)
     {
-        $sql = "select * from users where name='$name';";
+        $sql = "select * from users where nickname = '$name'";
         $result = mysqli_query($this->link_, $sql);
         return mysqli_fetch_assoc($result);
     }
