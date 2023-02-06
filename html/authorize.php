@@ -9,9 +9,9 @@ function Register()
 {
     global $errors;
 
-    if (!isset($_POST['name'])) {
+    if (!isset($_POST['nickname'])) {
         $errors[] = "Enter name!";
-    } else if (strlen($_POST['name']) < 4) {
+    } else if (strlen($_POST['nickname']) < 4) {
         $errors[] = "Too short name (minimum 4 letters)";
     }
     if (!isset($_POST['password'])) {
@@ -26,21 +26,21 @@ function Register()
     }
 
     $db = new UsersDatabase();
-    if ($db->UserExists($_POST['name'])) {
+    if ($db->UserExists($_POST['nickname'])) {
         $errors[] = "User with this nickname exists";
         return;
     }
 
-    $db->UserAdd($_POST['name'], $_POST['password']);
+    $db->UserAdd($_POST['nickname'], $_POST['password']);
 
-    $_SESSION['User'] = ['name' => $_POST['name'],
-        'is_admin' => $db->UserGet($_POST['name'])['is_admin']];
+    $_SESSION['User'] = ['nickname' => $_POST['nickname'],
+        'is_admin' => $db->UserGet($_POST['nickname'])['is_admin']];
 }
 
 function Login()
 {
     global $errors;
-    if (!isset($_POST['name'])) {
+    if (!isset($_POST['nickname'])) {
         $errors[] = "Enter name!";
     }
     if (!isset($_POST['password'])) {
@@ -52,13 +52,13 @@ function Login()
     }
 
     $db = new UsersDatabase();
-    if (!$db->UserLogin($_POST['name'], $_POST['password'])) {
+    if (!$db->UserLogin($_POST['nickname'], $_POST['password'])) {
         $errors[] = "Wrong login";
         return;
     }
 
 
-    $_SESSION['User'] = $db->UserGet($_POST['name']);
+    $_SESSION['User'] = $db->UserGet($_POST['nickname']);
 }
 
 if ($_POST != null && isset($_POST['action'])) {
@@ -89,9 +89,9 @@ if ($_POST != null && isset($_POST['action'])) {
 <body>
 
 <?php
-if (isset($_SESSION['User']['name'])) {
+if (isset($_SESSION['User']['nickname'])) {
     echo "<div class='reg_as'>Вы зарегистрированы как "
-        . $_SESSION['User']['name'] .
+        . $_SESSION['User']['nickname'] .
         "</div>";
 }
 ?>
@@ -102,7 +102,7 @@ if (isset($_SESSION['User']['name'])) {
         <input type="hidden" name="action" value="register">
         <label>
             <input type="text" id="name_input" name="name" placeholder="Enter nickname"
-                   value='<?php if (isset($_POST['name'])) echo $_POST['name'] ?>'>
+                   value='<?php if (isset($_POST['nickname'])) echo $_POST['nickname'] ?>'>
         </label>
         <label>
             <input type="text" id="password_input" name="password" placeholder="Enter password"
@@ -124,7 +124,7 @@ if (isset($_SESSION['User']['name'])) {
 </div>
 
 <?php
-if (isset($_SESSION['User']['name'])) {
+if (isset($_SESSION['User']['nickname'])) {
     echo "<a href='http://" . $_SERVER["SERVER_NAME"] . "'>Главная страница</a>";
 }
 ?>
